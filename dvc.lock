@@ -51,6 +51,9 @@ stages:
   test:
     cmd: python test.py
     deps:
+    - path: model.pkl
+      md5: 99171904aafe5e5779e9e0366dea9927
+      size: 39347258
     - path: test.py
       md5: 10080e9e944a6ca6bc949bd6e187083a
       size: 1621

@@ -27,6 +27,7 @@ stages:
     cmd: python test.py
     deps:
     - test.py
+    - model.pkl
     - x_test.npy
     - y_test.npy
     outs:
