@@ -2,6 +2,7 @@ import joblib
 import numpy as np
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, roc_auc_score, plot_roc_curve
 import matplotlib.pyplot as plt
+import json
 
 def test_model():
     x_test_data = np.load("./x_test.npy", allow_pickle=True)
@@ -12,9 +13,11 @@ def test_model():
 
     accuracy = accuracy_score(y_test_data, y_pred)
     accuracy = round(accuracy * 100, 1)
+
+    metrics = {"accuracy": accuracy}
     
-    with open('accuracy.txt', 'w') as f:
-        f.write(str(accuracy))
+    with open('metrics.json', 'w') as f:
+       json.dump(metrics, f)
 
     # Confusion Matrix and plot
     cm = confusion_matrix(y_test_data, model.predict(x_test_data))

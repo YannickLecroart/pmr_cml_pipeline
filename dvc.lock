@@ -55,8 +55,8 @@ stages:
       md5: 99171904aafe5e5779e9e0366dea9927
       size: 39347258
     - path: test.py
-      md5: 10080e9e944a6ca6bc949bd6e187083a
-      size: 1621
+      md5: b05d43e9700fa5fbefeb46aa935c7709
+      size: 1672
     - path: x_test.npy
       md5: d20b485cbdc6d443eaa4b72f55255962
       size: 240320
@@ -64,15 +64,15 @@ stages:
       md5: 290ce7cd4c804887eb045b67dd0186c6
       size: 20144
     outs:
-    - path: accuracy.txt
-      md5: a27b57bdc16954c6f1505f449e288356
-      size: 4
     - path: classification_report.txt
       md5: e5df23a3abf167ac2c14097fefba4a52
       size: 334
     - path: cm.png
       md5: a9ab36e9f6a42d3773747d65c0347f94
       size: 16317
+    - path: metrics.json
+      md5: c6f32054cefb531c221314545c48290c
+      size: 18
     - path: roc.png
       md5: 38f97a12bcfc36adf6d00549e6768e86
       size: 31952

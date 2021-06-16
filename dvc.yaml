@@ -35,5 +35,5 @@ stages:
     - roc.png
     - classification_report.txt
     metrics:
-    - accuracy.txt:
+    - metrics.json:
         cache: false #no local cache (multi computers)

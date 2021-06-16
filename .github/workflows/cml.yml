@@ -17,7 +17,7 @@ jobs:
           dvc repro #reproduce pipeline
           
           git fetch --prune #get git history to the runner to compare diffs
-          dvc metrics diff --show-md > report.md #compare diff with master branch
+          dvc metrics diff --show-md main > report.md #compare diff with main branch
           
           # Add Stats and figures to the report
           echo "## Model Metrics" >> report.md
