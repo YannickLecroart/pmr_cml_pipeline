@@ -9,11 +9,22 @@ jobs:
       - name: 'PMR CML Pipeline'
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         run: |
 
           # ML workflow
           pip install --upgrade pip
           pip install -r requirements.txt
           dvc pull
-          python get_data.py
+          dvc repro #reproduce pipeline
+          
+          git fetch --prune #get git history to the runner to compare diffs
+          dvc metrics diff --show-md > report.md #compare diff with master branch
+          
+          # Add Stats and figures to the report
+          echo "## Model Metrics" >> report.md
+          cat classification_report.txt >> report.md
+
+          echo "## Model Visualization" >> report.md 
+          cml-publish cm.png --md >> report.md
+          cml-publish roc.png --md >> report.md
+          cml-send-comment report.md
