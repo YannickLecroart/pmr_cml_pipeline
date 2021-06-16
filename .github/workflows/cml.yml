@@ -1,4 +1,4 @@
-name: model-CHD
+name: PMR-CML-DVC-Pipeline
 on: [push]
 jobs:
   run:

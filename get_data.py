@@ -1,7 +1,10 @@
 import pickle
+import joblib
 
 
-def get_data(self):
+def get_data():
+
+    pmr_data = joblib.load("./pmr_data.pkl")
     
     f = open("pmr_data.pkl", "wb")
     pickle.dump(pmr_data, f)
