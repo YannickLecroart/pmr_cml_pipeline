@@ -14,7 +14,6 @@ jobs:
           # ML workflow
           pip install --upgrade pip
           pip install -r requirements.txt
-          dvc pull
           dvc repro #reproduce pipeline
           
           git fetch --prune #get git history to the runner to compare diffs
