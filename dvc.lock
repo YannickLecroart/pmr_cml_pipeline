@@ -1,0 +1,75 @@
+schema: '2.0'
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - path: get_data.py
+      md5: ce78f25ba254994443946153350c932e
+      size: 293
+    outs:
+    - path: pmr_input_data.pkl
+      md5: 26a1284721351afd6d327edd51a7605f
+      size: 37540
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: pmr_input_data.pkl
+      md5: 26a1284721351afd6d327edd51a7605f
+      size: 37540
+    - path: preprocess.py
+      md5: cb2ce2e6cd4448651fc2b75d9e729d57
+      size: 4106
+    outs:
+    - path: x_test.npy
+      md5: d20b485cbdc6d443eaa4b72f55255962
+      size: 240320
+    - path: x_train.npy
+      md5: 5e5f80927b0317c6b9aef4ee1aea7295
+      size: 2161088
+    - path: y_test.npy
+      md5: 290ce7cd4c804887eb045b67dd0186c6
+      size: 20144
+    - path: y_train.npy
+      md5: ce3eeb8b90ba7e4f44a0dedc866de5d5
+      size: 180208
+  train:
+    cmd: python train.py
+    deps:
+    - path: train.py
+      md5: 8f9c879ca482f41786e2bc0b7b7516fa
+      size: 504
+    - path: x_train.npy
+      md5: 5e5f80927b0317c6b9aef4ee1aea7295
+      size: 2161088
+    - path: y_train.npy
+      md5: ce3eeb8b90ba7e4f44a0dedc866de5d5
+      size: 180208
+    outs:
+    - path: model.pkl
+      md5: 99171904aafe5e5779e9e0366dea9927
+      size: 39347258
+  test:
+    cmd: python test.py
+    deps:
+    - path: test.py
+      md5: 10080e9e944a6ca6bc949bd6e187083a
+      size: 1621
+    - path: x_test.npy
+      md5: d20b485cbdc6d443eaa4b72f55255962
+      size: 240320
+    - path: y_test.npy
+      md5: 290ce7cd4c804887eb045b67dd0186c6
+      size: 20144
+    outs:
+    - path: accuracy.txt
+      md5: a27b57bdc16954c6f1505f449e288356
+      size: 4
+    - path: classification_report.txt
+      md5: e5df23a3abf167ac2c14097fefba4a52
+      size: 334
+    - path: cm.png
+      md5: a9ab36e9f6a42d3773747d65c0347f94
+      size: 16317
+    - path: roc.png
+      md5: 38f97a12bcfc36adf6d00549e6768e86
+      size: 31952

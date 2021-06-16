@@ -1,0 +1,38 @@
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - get_data.py
+    outs:
+    - pmr_input_data.pkl  
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - preprocess.py
+    - pmr_input_data.pkl
+    outs:
+    - x_train.npy
+    - x_test.npy
+    - y_train.npy
+    - y_test.npy
+  train:
+    cmd: python train.py
+    deps:
+    - train.py
+    - x_train.npy
+    - y_train.npy
+    outs:
+    - model.pkl
+  test:
+    cmd: python test.py
+    deps:
+    - test.py
+    - x_test.npy
+    - y_test.npy
+    outs:
+    - cm.png
+    - roc.png
+    - classification_report.txt
+    metrics:
+    - accuracy.txt:
+        cache: false #no local cache (multi computers)

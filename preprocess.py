@@ -1,4 +1,3 @@
-import argparse
 from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
@@ -68,10 +67,10 @@ def _create_features(df, holidays, label=None):#input/output features pour algo
             return X, y
         return X
 
-def _preprocess_data(pmr_data_file):
+def _preprocess_data():
 
-    f = open(pmr_data_file, "rb")
-    model = joblib.load("./model.pkl")
+    f = open("./pmr_data.pkl", "rb")
+    
     pmr_json_data = pickle.load(f)
 
     df = pd.DataFrame(pmr_json_data['values'], index =pmr_json_data['index'], 
@@ -105,7 +104,4 @@ def _preprocess_data(pmr_data_file):
 if __name__ == '__main__':
 
     print('Preprocessing data...')
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--pmr_data_file')
-    args = parser.parse_args()
-    _preprocess_data(args.pmr_data_file)
+    _preprocess_data()

@@ -6,7 +6,7 @@ def get_data():
 
     pmr_data = joblib.load("./pmr_data.pkl")
     
-    f = open("pmr_data.pkl", "wb")
+    f = open("pmr_input_data.pkl", "wb")
     pickle.dump(pmr_data, f)
     f.close()
     
