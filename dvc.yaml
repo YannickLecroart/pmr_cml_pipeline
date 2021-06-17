@@ -21,6 +21,8 @@ stages:
     - train.py
     - x_train.npy
     - y_train.npy
+    - x_test.npy
+    - y_test.npy
     outs:
     - model.pkl
   test:
