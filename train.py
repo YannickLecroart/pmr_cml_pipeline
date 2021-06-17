@@ -8,9 +8,6 @@ def train_model():
     y_train_data = np.load("./y_train.npy", allow_pickle=True)
     x_test_data = np.load("./x_test.npy", allow_pickle=True)
     y_test_data = np.load("./y_test.npy", allow_pickle=True)
-
-    model = RandomForestClassifier(n_estimators = 1000, max_depth=10, verbose=1) #depth 4
-    model.fit(x_train_data, y_train_data)
     
     model = XGBClassifier(objective='reg:logistic', n_estimators=1000, learning_rate=0.1)
     model.fit(x_train_data, y_train_data,
